@@ -1,0 +1,15 @@
+/home/alexander/Uni/TMPS/KitchenSim/bin/Debug/net7.0/KitchenSim
+/home/alexander/Uni/TMPS/KitchenSim/bin/Debug/net7.0/KitchenSim.deps.json
+/home/alexander/Uni/TMPS/KitchenSim/bin/Debug/net7.0/KitchenSim.runtimeconfig.json
+/home/alexander/Uni/TMPS/KitchenSim/bin/Debug/net7.0/KitchenSim.dll
+/home/alexander/Uni/TMPS/KitchenSim/bin/Debug/net7.0/KitchenSim.pdb
+/home/alexander/Uni/TMPS/KitchenSim/obj/Debug/net7.0/KitchenSim.csproj.AssemblyReference.cache
+/home/alexander/Uni/TMPS/KitchenSim/obj/Debug/net7.0/KitchenSim.GeneratedMSBuildEditorConfig.editorconfig
+/home/alexander/Uni/TMPS/KitchenSim/obj/Debug/net7.0/KitchenSim.AssemblyInfoInputs.cache
+/home/alexander/Uni/TMPS/KitchenSim/obj/Debug/net7.0/KitchenSim.AssemblyInfo.cs
+/home/alexander/Uni/TMPS/KitchenSim/obj/Debug/net7.0/KitchenSim.csproj.CoreCompileInputs.cache
+/home/alexander/Uni/TMPS/KitchenSim/obj/Debug/net7.0/KitchenSim.dll
+/home/alexander/Uni/TMPS/KitchenSim/obj/Debug/net7.0/refint/KitchenSim.dll
+/home/alexander/Uni/TMPS/KitchenSim/obj/Debug/net7.0/KitchenSim.pdb
+/home/alexander/Uni/TMPS/KitchenSim/obj/Debug/net7.0/KitchenSim.genruntimeconfig.cache
+/home/alexander/Uni/TMPS/KitchenSim/obj/Debug/net7.0/ref/KitchenSim.dll
