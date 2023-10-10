@@ -1,8 +1,8 @@
 namespace Kitchen;
 using System.Collections.Generic;
-public class Meat: Ingredient
+public class Bread : Ingredient
 {
-    public Meat(string name): base(name)
+    public Bread(string name): base(name)
     {
         this.state.Add("Raw");
     }

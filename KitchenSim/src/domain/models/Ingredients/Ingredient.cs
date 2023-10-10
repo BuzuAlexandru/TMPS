@@ -1,6 +1,6 @@
 namespace Kitchen;
 using System.Collections.Generic;
-public abstract class Ingredient
+public abstract class Ingredient: IngredientPrototype
 {
     public List<string> state;
     public string name;
@@ -13,5 +13,12 @@ public abstract class Ingredient
     public virtual void Process(string action, IProcessingType type)
     {
         this.state.Add(action);
+    }
+    public Ingredient Clone()
+    {
+        Ingredient clone = (Ingredient) this.MemberwiseClone();
+        clone.name = this.name;
+        clone.state = new List<string>(this.state);
+        return clone;
     }
 }

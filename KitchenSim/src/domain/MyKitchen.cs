@@ -2,22 +2,15 @@ namespace Kitchen;
 using System;
 using System.Collections.Generic;
 
-class MyKitchen
+public class MyKitchen
 {
-    // public List<IAppliance> appliances = new();
-    
-    // public void AddAppliance (IAppliance aplnc)
-    // {
-    //     this.appliances.Add(aplnc);
-    // }
-
-    public static Ingredient UseAppliance(IAppliance appliance, Ingredient ingredient)
+    public static void UseAppliance(IAppliance appliance, Ingredient ingredient)
     {
-        return appliance.Use(ingredient);
+        appliance.Use(ingredient);
     }
 
-    public static Ingredient UseCondiment(ICondiment condiment, Ingredient ingredient)
+    public static void UseCondiment(ICondiment condiment, Ingredient ingredient)
     {
-        return condiment.Season(ingredient);
+        condiment.Use(ingredient);
     }
 }

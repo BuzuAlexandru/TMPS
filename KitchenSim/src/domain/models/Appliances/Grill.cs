@@ -1,9 +1,9 @@
 namespace Kitchen;
 public class Grill: IAppliance, IHeatProcessing
 {
-    public Ingredient Use(Ingredient ingredient)
+    public void Use(Ingredient ingredient)
     {
         ingredient.Process("Grilled", this);
-        return ingredient;
+        Logger.Instance.Log($"Grilled {ingredient.name}.");
     }
 }

@@ -8,12 +8,22 @@ class ConsolePrinter
         Console.WriteLine();
         foreach (var ingredient in dish.ingredients)
         {
-            Console.WriteLine(ingredient.name);
+            Console.WriteLine($"\t{ingredient.name}");
             foreach (var property in ingredient.state)
             {
-                Console.WriteLine($"\t{property}");
+                Console.WriteLine($"\t\t{property}");
             }
             Console.WriteLine();
+        }
+    }
+
+    public static void PrintLogs()
+    {
+        List<string> log = Logger.Instance.GetLogs();
+
+        foreach (var entry in log)
+        {
+            Console.WriteLine(entry);
         }
     }
 }

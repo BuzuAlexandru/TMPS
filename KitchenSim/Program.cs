@@ -1,42 +1,75 @@
 ﻿using Kitchen;
 using static Kitchen.MyKitchen;
+using static Kitchen.ApplianceFactory;
+using static Kitchen.CondimentFactory;
+using static Kitchen.CookwareFactory;
+using static Kitchen.IngredientFactory;
 using static Kitchen.ConsolePrinter;
 
 class Program
 {
     static void Main()
     {
-        MyKitchen kitchen = new();
+        Example2();
 
-        ICookware pan = new Skillet();
-        IAppliance stove = new Stove(pan);
-        IAppliance grill = new Grill();
-        IAppliance cuttingBoard = new CuttingBoard();
+        PrintLogs();
+    }
+
+    static void Example2()
+    {
+        BurgerCook cook = new();
+
+        LambBurgerBuilder lambBurgerBuilder = new LambBurgerBuilder();
+        cook.MakeCompleteBurger(lambBurgerBuilder);
+        Dish burger1 = lambBurgerBuilder.GetBurger();
+        PresentDish(burger1);
+        
+        ChickenBurgerBuilder chickenBurgerBuilder = new ChickenBurgerBuilder();
+        cook.MakeCompleteBurger(chickenBurgerBuilder);
+        Dish burger2 = chickenBurgerBuilder.GetBurger();
+        PresentDish(burger2);
+    }
+
+    static void Example1()
+    {
+        ICookware pan = CreateSkillet();
+        IAppliance stove = CreateStove(pan);
+        IAppliance grill = CreateGrill();
+        IAppliance cuttingBoard = CreateCuttingBoard();
 
 
-        ICondiment salt = new Salt("Kosher salt");
-        ICondiment pepper = new Spice("Black pepper");
-        ICondiment basil = new Herb("Basil");
-        ICondiment rosemary = new Herb("Rosemary");
+        ICondimentFactory condimentFactory = new CommonCondimentFactory();
+        ICondiment salt = condimentFactory.CreateSalt();
+        ICondiment spice = condimentFactory.CreateSpice();
+        ICondiment herb = condimentFactory.CreateHerb();
+        ICondiment powder = CreateSpice("Garlic powder");
 
-        Dish dish = new("Steak with potatoes");
 
-        Ingredient steak = new Meat("Ribeye Steak");
-        steak = UseCondiment(salt, steak);
-        steak = UseCondiment(pepper, steak);
-        steak = UseAppliance(grill, steak);
-        steak = UseCondiment(basil, steak);
+        Ingredient steak = CreateMeat("Ribeye Steak");
+        UseCondiment(salt, steak);
+        UseCondiment(spice, steak);
+        UseAppliance(grill, steak);
+        UseCondiment(herb, steak);
 
-        dish.AddIngredient(steak);
+        Ingredient potatoes = CreateVegetable("Sweet potatoes");
+        UseAppliance(cuttingBoard, potatoes);
+        UseCondiment(salt, potatoes);
+        UseCondiment(spice, potatoes);
+        UseAppliance(stove, potatoes);
 
-        Ingredient potatoes = new Vegetable("Sweet potatoes");
-        potatoes = UseCondiment(salt, potatoes);
-        potatoes = UseCondiment(pepper, potatoes);
-        potatoes = UseAppliance(stove, potatoes);
-        potatoes = UseCondiment(rosemary, potatoes);
+        Ingredient tomatoes = CreateVegetable("Cherry tomatoes");
+        UseCondiment(salt, tomatoes);
+        UseCondiment(spice, tomatoes);
+        UseCondiment(powder, tomatoes);
+        UseAppliance(grill, tomatoes);
 
-        dish.AddIngredient(potatoes);
-
+        Dish dish = new DishBuilder()
+            .AddIngredient(steak)
+            .AddIngredient(potatoes)
+            .AddIngredient(tomatoes)
+            .NameDish("Steak with vegies")
+            .GetDish();
+        
         PresentDish(dish);
     }
 }

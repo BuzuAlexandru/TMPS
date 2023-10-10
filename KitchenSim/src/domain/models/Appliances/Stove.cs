@@ -1,20 +1,20 @@
 namespace Kitchen;
 public class Stove: IAppliance, IHeatProcessing
 {
-    public ICookware cookware;
+    ICookware _cookware;
 
     public Stove(ICookware cookware)
     {
-        this.cookware = cookware;
+        this._cookware = cookware;
     }
 
     public void SetCookWare(ICookware equipment)
     {
-        this.cookware = equipment;
+        this._cookware = equipment;
     }
 
-    public Ingredient Use(Ingredient ingredient)
+    public void Use(Ingredient ingredient)
     {
-        return cookware.Prepare(ingredient);
+        _cookware.Prepare(ingredient);
     }
 }

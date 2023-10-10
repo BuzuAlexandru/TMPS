@@ -1,9 +1,9 @@
 namespace Kitchen;
 public class Pot: ICookware, IHeatProcessing
 {
-    public Ingredient Prepare(Ingredient ingredient)
+    public void Prepare(Ingredient ingredient)
     {
         ingredient.Process("Boiled", this);
-        return ingredient;
+        Logger.Instance.Log($"Boiled {ingredient.name}.");
     }
 }
