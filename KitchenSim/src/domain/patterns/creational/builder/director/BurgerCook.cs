@@ -2,18 +2,20 @@ namespace Kitchen;
 
 public class BurgerCook
 {
-    public void MakeVegilessBurger(IBurgerBuilder builder)
+    public Dish MakeVegilessBurger(IBurgerBuilder builder)
     {
-        builder.AddBun()
-            .AddPatty()
-            .AddCheese();
-    }
-
-    public void MakeCompleteBurger(IBurgerBuilder builder)
-    {
-        builder.AddBun()
+        return builder.AddBun()
             .AddPatty()
             .AddCheese()
-            .AddGreens();
+            .GetBurger();
+    }
+
+    public Dish MakeCompleteBurger(IBurgerBuilder builder)
+    {
+        return builder.AddBun()
+            .AddPatty()
+            .AddCheese()
+            .AddGreens()
+            .GetBurger();
     }
 }

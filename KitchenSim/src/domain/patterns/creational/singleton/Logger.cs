@@ -1,6 +1,6 @@
 namespace Kitchen;
 
-public class Logger
+public class Logger: ILogger
 {
     private static readonly Logger _instance = new();
     private readonly List<string> _log = new();

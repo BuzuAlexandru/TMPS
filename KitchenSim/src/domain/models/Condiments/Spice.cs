@@ -9,9 +9,9 @@ public class Spice: ICondiment, IRawProcessing
         this.spice= type;
     }
 
-    public void Use(Ingredient ingredient)
+    public void UseCondiment(Ingredient ingredient, ILogger logger)
     {
         ingredient.Process($"Spiced with {spice}", this);
-        Logger.Instance.Log($"Spiced {ingredient.name} with {spice}.");
+        logger.Log($"Spiced {ingredient.name} with {spice}.");
     }
 }

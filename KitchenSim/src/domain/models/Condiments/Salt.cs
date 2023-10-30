@@ -9,9 +9,9 @@ public class Salt: ICondiment, IRawProcessing
         this.type = type;
     }
 
-    public void Use(Ingredient ingredient)
+    public void UseCondiment(Ingredient ingredient, ILogger logger)
     {
         ingredient.Process($"Salted with {type}", this);
-        Logger.Instance.Log($"Salted {ingredient.name} with {type}.");
+        logger.Log($"Salted {ingredient.name} with {type}.");
     }
 }

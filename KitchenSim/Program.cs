@@ -10,23 +10,32 @@ class Program
 {
     static void Main()
     {
-        Example2();
+        Example3();
 
         PrintLogs();
+    }
+
+    static void Example3()
+    {
+        IAppliance grill = CreateGrill();
+
+        ICondiment adapter = new ApplianceAdapter(grill);
+        ILogger logger = new LoggerProxy(Logger.Instance, "1111");
+
+        IFacade facade = new Facade(adapter, logger);
+        facade.PerformOperation();
     }
 
     static void Example2()
     {
         BurgerCook cook = new();
 
-        LambBurgerBuilder lambBurgerBuilder = new LambBurgerBuilder();
-        cook.MakeCompleteBurger(lambBurgerBuilder);
-        Dish burger1 = lambBurgerBuilder.GetBurger();
+        IBurgerBuilder lambBurgerBuilder = new LambBurgerBuilder();
+        Dish burger1 = cook.MakeCompleteBurger(lambBurgerBuilder);
         PresentDish(burger1);
         
-        ChickenBurgerBuilder chickenBurgerBuilder = new ChickenBurgerBuilder();
-        cook.MakeCompleteBurger(chickenBurgerBuilder);
-        Dish burger2 = chickenBurgerBuilder.GetBurger();
+        IBurgerBuilder chickenBurgerBuilder = new ChickenBurgerBuilder();
+        Dish burger2 = cook.MakeCompleteBurger(chickenBurgerBuilder);
         PresentDish(burger2);
     }
 

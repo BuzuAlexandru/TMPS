@@ -13,8 +13,8 @@ public class Stove: IAppliance, IHeatProcessing
         this._cookware = equipment;
     }
 
-    public void Use(Ingredient ingredient)
+    public void UseAppliance(Ingredient ingredient, ILogger logger)
     {
-        _cookware.Prepare(ingredient);
+        _cookware.Prepare(ingredient, logger);
     }
 }

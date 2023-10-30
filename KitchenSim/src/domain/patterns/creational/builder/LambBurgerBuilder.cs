@@ -57,16 +57,16 @@ public class LambBurgerBuilder: IBurgerBuilder
         return this;
     }
 
-    public void Reset()
-    {
-        burger = new("Lamb Burger");
-    }
+    // public void Reset()
+    // {
+        
+    // }
 
     public Dish GetBurger()
     {
         Dish result = burger;
-
-        Reset();
+        burger = new("Lamb Burger");
+        // Reset();
 
         return result;
     }

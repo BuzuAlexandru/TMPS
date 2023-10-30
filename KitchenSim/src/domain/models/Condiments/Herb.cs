@@ -9,9 +9,9 @@ public class Herb: ICondiment, IRawProcessing
         this.herb= type;
     }
 
-    public void Use(Ingredient ingredient)
+    public void UseCondiment(Ingredient ingredient, ILogger logger)
     {
         ingredient.Process($"Garnished with {herb}", this);
-        Logger.Instance.Log($"Garnished {ingredient.name} with {herb}.");
+        logger.Log($"Garnished {ingredient.name} with {herb}.");
     }
 }

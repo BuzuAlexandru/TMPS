@@ -6,4 +6,5 @@ public interface IBurgerBuilder
     public IBurgerBuilder AddPatty();
     public IBurgerBuilder AddCheese();
     public IBurgerBuilder AddGreens();
+    public Dish GetBurger();
 }

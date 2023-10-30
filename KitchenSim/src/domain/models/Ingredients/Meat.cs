@@ -3,18 +3,18 @@ public class Meat: Ingredient
 {
     public Meat(string name): base(name)
     {
-        this.state.Add("Raw");
+        state.Add("Raw");
     }
     public override void Process(string action, IProcessingType type)
     {   
         if (type is not IRawProcessing)
         {
-            int index = this.state.FindIndex(s => s == "Raw");
+            int index = state.FindIndex(s => s == "Raw");
             if (index != -1)
             {
-                this.state.RemoveAt(index);
+                state.RemoveAt(index);
             }
         }
-        this.state.Add(action);
+        state.Add(action);
     }
 }
