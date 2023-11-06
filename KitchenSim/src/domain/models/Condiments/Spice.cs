@@ -12,6 +12,6 @@ public class Spice: ICondiment, IRawProcessing
     public void UseCondiment(Ingredient ingredient, ILogger logger)
     {
         ingredient.Process($"Spiced with {spice}", this);
-        logger.Log($"Spiced {ingredient.name} with {spice}.");
+        logger.Log($"Spiced {ingredient.GetName()} with {spice}.");
     }
 }

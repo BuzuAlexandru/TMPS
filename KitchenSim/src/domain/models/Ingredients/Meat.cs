@@ -1,8 +1,9 @@
 namespace Kitchen;
 public class Meat: Ingredient
 {
-    public Meat(string name): base(name)
+    public Meat(string name): base()
     {
+        this.name = name;
         state.Add("Raw");
     }
     public override void Process(string action, IProcessingType type)

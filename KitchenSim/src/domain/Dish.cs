@@ -1,17 +1,19 @@
 namespace Kitchen;
 using System.Collections.Generic;
-public class Dish
+public class Dish: Subject
 {
-    public List<Ingredient> ingredients = new();
+    public List<Ingredient> ingredients;
     public string name;
 
     public Dish(string name)
     {
+        ingredients = new List<Ingredient>();
         this.name = name;
     }
     public void AddIngredient(Ingredient ingredient)
     {
         this.ingredients.Add(ingredient);
+        Notify();
     }
 
     public Dish Clone()

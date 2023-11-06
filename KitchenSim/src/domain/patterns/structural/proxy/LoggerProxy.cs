@@ -6,9 +6,9 @@ public class LoggerProxy : ILogger
     private readonly ILogger logger;
     private readonly string password;
 
-    public LoggerProxy(ILogger logr, string pswd)
+    public LoggerProxy(string pswd)
     {
-        logger = logr;
+        logger = Logger.Instance;
         password = pswd;
     }
 

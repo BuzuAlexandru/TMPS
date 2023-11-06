@@ -4,7 +4,7 @@ using static Kitchen.ApplianceFactory;
 using static Kitchen.CondimentFactory;
 using static Kitchen.CookwareFactory;
 using static Kitchen.IngredientFactory;
-using static Kitchen.ConsolePrinter;
+// using static Kitchen.ConsolePrinter;
 
 class Program
 {
@@ -12,7 +12,10 @@ class Program
     {
         Example3();
 
-        PrintLogs();
+        ILogger logger = new LoggerProxy("1111");
+        IPrinter printer = new ConsolePrinter();
+
+        printer.PrintLogs(logger);
     }
 
     static void Example3()
@@ -20,9 +23,12 @@ class Program
         IAppliance grill = CreateGrill();
 
         ICondiment adapter = new ApplianceAdapter(grill);
-        ILogger logger = new LoggerProxy(Logger.Instance, "1111");
+        ILogger logger = new LoggerProxy("1111");
+        Ingredient potato = new CounterDecorator(CreateVegetable("Potato"));
+        IPrinter printer = new ConsolePrinter();
 
-        IFacade facade = new Facade(adapter, logger);
+        IFacade facade = new StructuralFacade(adapter, logger, potato, printer);
+
         facade.PerformOperation();
     }
 
@@ -32,11 +38,11 @@ class Program
 
         IBurgerBuilder lambBurgerBuilder = new LambBurgerBuilder();
         Dish burger1 = cook.MakeCompleteBurger(lambBurgerBuilder);
-        PresentDish(burger1);
+        // PresentDish(burger1);
         
         IBurgerBuilder chickenBurgerBuilder = new ChickenBurgerBuilder();
         Dish burger2 = cook.MakeCompleteBurger(chickenBurgerBuilder);
-        PresentDish(burger2);
+        // PresentDish(burger2);
     }
 
     static void Example1()
@@ -79,7 +85,7 @@ class Program
             .NameDish("Steak with vegies")
             .GetDish();
         
-        PresentDish(dish);
+        // PresentDish(dish);
     }
 }
 

@@ -2,8 +2,9 @@ namespace Kitchen;
 using System.Collections.Generic;
 public class Vegetable: Ingredient
 {
-    public Vegetable(string name): base(name)
+    public Vegetable(string name): base()
     {
+        this.name = name;
         this.state.Add("Raw");
     }
     public override void Process(string action, IProcessingType type)

@@ -12,6 +12,6 @@ public class Sauce: ICondiment, IRawProcessing
     public void UseCondiment(Ingredient ingredient, ILogger logger)
     {
         ingredient.Process($"With {this.sauce}", this);
-        logger.Log($"Added {sauce} to {ingredient.name}.");
+        logger.Log($"Added {sauce} to {ingredient.GetName()}.");
     }
 }

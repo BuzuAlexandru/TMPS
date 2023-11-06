@@ -2,8 +2,9 @@ namespace Kitchen;
 using System.Collections.Generic;
 public class Cheese : Ingredient
 {
-    public Cheese(string name): base(name)
+    public Cheese(string name): base()
     {
+        this.name = name;
         this.state.Add("Raw");
     }
     public override void Process(string action, IProcessingType type)

@@ -2,18 +2,24 @@ namespace Kitchen;
 using System.Collections.Generic;
 public abstract class Ingredient: IngredientPrototype
 {
-    public List<string> state;
-    public string name;
+    protected List<string> state; 
+    protected string name = "";
 
-    public Ingredient(string name)
+    public Ingredient()
     {
-        this.name = name;
-        this.state = new List<string>();
+        state = new List<string>();
     }
-    public virtual void Process(string action, IProcessingType type)
+    public abstract void Process(string action, IProcessingType type);
+    public virtual string GetName()
     {
-        this.state.Add(action);
+        return name;
     }
+
+    public virtual List<string> GetState()
+    {
+        return state;
+    }
+    
     public Ingredient Clone()
     {
         Ingredient clone = (Ingredient) this.MemberwiseClone();

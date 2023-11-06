@@ -1,15 +1,15 @@
 namespace Kitchen;
 
-class ConsolePrinter
+class ConsolePrinter: IPrinter
 {
-    public static void PresentDish(Dish dish)
+    public void PresentDish(Dish dish)
     {
         Console.WriteLine(dish.name);
         Console.WriteLine();
         foreach (var ingredient in dish.ingredients)
         {
-            Console.WriteLine($"\t{ingredient.name}");
-            foreach (var property in ingredient.state)
+            Console.WriteLine($"\t{ingredient.GetName()}");
+            foreach (var property in ingredient.GetState())
             {
                 Console.WriteLine($"\t\t{property}");
             }
@@ -17,9 +17,9 @@ class ConsolePrinter
         }
     }
 
-    public static void PrintLogs()
+    public void PrintLogs(ILogger logger)
     {
-        List<string> log = Logger.Instance.GetLogs();
+        List<string> log = logger.GetLogs();
 
         foreach (var entry in log)
         {

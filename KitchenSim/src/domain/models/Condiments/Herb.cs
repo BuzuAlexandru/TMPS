@@ -12,6 +12,6 @@ public class Herb: ICondiment, IRawProcessing
     public void UseCondiment(Ingredient ingredient, ILogger logger)
     {
         ingredient.Process($"Garnished with {herb}", this);
-        logger.Log($"Garnished {ingredient.name} with {herb}.");
+        logger.Log($"Garnished {ingredient.GetName()} with {herb}.");
     }
 }
