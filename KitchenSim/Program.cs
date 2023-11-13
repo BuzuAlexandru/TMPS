@@ -4,18 +4,37 @@ using static Kitchen.ApplianceFactory;
 using static Kitchen.CondimentFactory;
 using static Kitchen.CookwareFactory;
 using static Kitchen.IngredientFactory;
-// using static Kitchen.ConsolePrinter;
 
 class Program
 {
     static void Main()
     {
-        Example3();
+        Example4();
 
         ILogger logger = new LoggerProxy("1111");
         IPrinter printer = new ConsolePrinter();
 
         printer.PrintLogs(logger);
+    }
+
+    static void Example4()
+    {
+        Dish dish = new("New Dish");
+        IPrinter printer = new ConsolePrinter();
+        ICommand command = new PrinterCommand(printer, dish);
+        IInvoker invoker = new Invoker(command);
+        ILogger logger = new LoggerProxy("1111");
+
+        Kitchen.IObserver<Dish> observer1 = new DishObserver(logger);
+        dish.Attach(observer1);
+        dish.AddIngredient(CreateMeat("Steak"));
+
+        invoker.Invoke();
+
+        ICook cook = new Cook("Remy");
+
+        for(int i=0; i<11; i++)
+            cook.Work();
     }
 
     static void Example3()

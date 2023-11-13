@@ -2,7 +2,7 @@ namespace Kitchen;
 
 public class PrinterCommand: ICommand
 {
-    readonly IPrinter printer;
+    IPrinter printer;
     Dish dish; 
     public PrinterCommand(IPrinter printer, Dish dish)
     {
@@ -13,6 +13,11 @@ public class PrinterCommand: ICommand
     public Dish Dish
     {
         set { dish = value; }
+    }
+
+    public IPrinter Printer
+    {
+        set { printer = value; }
     }
 
     public void Execute()

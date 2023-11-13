@@ -1,6 +1,6 @@
 namespace Kitchen;
 
-public class Invoker
+public class Invoker: IInvoker
 {
     private ICommand command;
 
@@ -14,7 +14,7 @@ public class Invoker
         set { command = value; }
     }
 
-    public void Execute()
+    public void Invoke()
     {
         command.Execute();
     }

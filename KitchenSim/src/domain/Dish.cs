@@ -1,6 +1,6 @@
 namespace Kitchen;
 using System.Collections.Generic;
-public class Dish: Subject
+public class Dish: Subject<Dish>
 {
     public List<Ingredient> ingredients;
     public string name;
@@ -10,10 +10,19 @@ public class Dish: Subject
         ingredients = new List<Ingredient>();
         this.name = name;
     }
+    
     public void AddIngredient(Ingredient ingredient)
     {
         this.ingredients.Add(ingredient);
         Notify();
+    }
+
+    public override void Notify()
+    {
+        foreach (IObserver<Dish> observer in observers)
+        {
+            observer.Update(this);
+        }
     }
 
     public Dish Clone()

@@ -1,6 +1,6 @@
 namespace Kitchen;
 
-public interface IObserver
+public interface IObserver<T>
 {
-    public void Update(Subject subject);
+    public void Update(T subject);
 }
